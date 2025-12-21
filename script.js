@@ -68,7 +68,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = document.querySelector('.hero-visuals');
 
     if (shapes.length > 0 && container) {
+        const isMobile = window.innerWidth <= 768;
+        
         shapes.forEach((shape, index) => {
+            // Skip shape-2 on mobile (it's hidden via CSS)
+            if (isMobile && shape.classList.contains('shape-2')) {
+                return;
+            }
             // Random Initial Position within container
             // Using a grid-like logic or pure random to spread them out
             // For pure random but contained:
@@ -89,16 +95,21 @@ document.addEventListener('DOMContentLoaded', () => {
             
             let x = 0;
             let y = 0;
+            let rotation = 0;
             
-            // Randomize slightly from their CSS anchored positions to give "messy" look
-            // No, user asked "randomly spaced and placed". 
-            // Let's set initial transform to random values.
-            
-            // We'll just init X/Y to 0 relative to their CSS position, but let the user drag from there.
-            // If we want "randomly placed" every refresh, we can add random offsets:
-            x = (Math.random() - 0.5) * 100; // +/- 50px
-            y = (Math.random() - 0.5) * 100; // +/- 50px
-            let rotation = (Math.random() - 0.5) * 60; // Random tilt
+            if (isMobile) {
+                // Mobile default positions - no random offset, use CSS positioning
+                // Shape-1 (crown) and Shape-3 (swirl) are positioned via CSS
+                // For mobile, start at 0,0 transform (CSS handles positioning)
+                x = 0;
+                y = 0;
+                rotation = 0;
+            } else {
+                // Desktop: randomize slightly from their CSS anchored positions
+                x = (Math.random() - 0.5) * 100; // +/- 50px
+                y = (Math.random() - 0.5) * 100; // +/- 50px
+                rotation = (Math.random() - 0.5) * 60; // Random tilt
+            }
 
             // Update DOM immediately
             shape.style.transform = `translate(${x}px, ${y}px) rotate(${rotation}deg)`;

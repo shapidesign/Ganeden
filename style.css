@@ -676,8 +676,24 @@ img {
         height: 300px;
     }
     
-    .blob-1 { right: 50%; transform: translateX(50%); top: 10px; }
-    .blob-2 { left: 50%; transform: translateX(-50%); bottom: 10px; }
+    /* Default mobile shape positions - crown on left, swirl on right */
+    .shape-1 {
+        top: 20%;
+        left: 5%;
+        right: auto;
+        width: 150px;
+    }
+    
+    .shape-2 {
+        display: none; /* Hide middle shape on mobile */
+    }
+    
+    .shape-3 {
+        top: 15%;
+        right: 5%;
+        left: auto;
+        width: 120px;
+    }
 
     .hero-subtitle {
         margin-left: auto;
