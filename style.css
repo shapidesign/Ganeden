@@ -304,9 +304,12 @@ img {
     user-select: none;
     touch-action: none;
     will-change: transform;
-    /* Removed blend mode and filters as requested */
+    /* Blend mode to help remove white background */
+    mix-blend-mode: darken;
     background: transparent;
     object-fit: contain;
+    /* Filter to help remove white pixels and improve visibility */
+    filter: contrast(1.1) brightness(1.05);
 }
 
 .fun-shape:active {
