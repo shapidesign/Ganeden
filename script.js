@@ -71,10 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const isMobile = window.innerWidth <= 768;
         
         shapes.forEach((shape, index) => {
-            // Skip shape-2 on mobile (it's hidden via CSS)
-            if (isMobile && shape.classList.contains('shape-2')) {
-                return;
-            }
+            // All shapes are visible on mobile now
             // Random Initial Position within container
             // Using a grid-like logic or pure random to spread them out
             // For pure random but contained:

@@ -305,34 +305,46 @@ img {
     user-select: none;
     touch-action: none;
     will-change: transform;
-    /* Static by default, moved by JS */
+    /* Remove white background - using blend mode to help with white backgrounds */
+    /* Note: For best results, use PNG images with transparent backgrounds */
+    mix-blend-mode: darken;
+    background: transparent;
+    object-fit: contain;
+    /* Filter to help remove white pixels */
+    filter: drop-shadow(4px 4px 0 rgba(20, 53, 47, 0.2)) contrast(1.1) brightness(1.05);
 }
 
 .fun-shape:active {
     cursor: grabbing;
 }
 
-/* Remove fixed positions to allow JS random placement or stick to loose anchors */
-/* We keep loose anchors so they don't pile up, JS adds randomness */
+/* Position the vegetable/fruit images in hero */
 .shape-1 {
     top: 10%;
-    right: 15%;
-    width: 200px;
+    right: 10%;
+    width: 180px;
     z-index: 1;
 }
 
 .shape-2 {
-    bottom: 10%;
+    bottom: 15%;
     left: 10%;
-    width: 180px;
+    width: 160px;
     z-index: 2;
 }
 
 .shape-3 {
-    top: 30%;
-    left: 45%;
-    width: 140px;
+    top: 25%;
+    left: 40%;
+    width: 150px;
     z-index: 3;
+}
+
+.shape-4 {
+    top: 50%;
+    right: 25%;
+    width: 140px;
+    z-index: 4;
 }
 
 /* Marquee */
@@ -676,23 +688,33 @@ img {
         height: 300px;
     }
     
-    /* Default mobile shape positions - crown on left, swirl on right */
+    /* Default mobile vegetable positions */
     .shape-1 {
-        top: 20%;
+        top: 10%;
         left: 5%;
         right: auto;
-        width: 150px;
+        width: 120px;
     }
     
     .shape-2 {
-        display: none; /* Hide middle shape on mobile */
+        bottom: 10%;
+        left: 5%;
+        right: auto;
+        width: 110px;
     }
     
     .shape-3 {
         top: 15%;
         right: 5%;
         left: auto;
-        width: 120px;
+        width: 100px;
+    }
+    
+    .shape-4 {
+        bottom: 15%;
+        right: 5%;
+        left: auto;
+        width: 100px;
     }
 
     .hero-subtitle {
