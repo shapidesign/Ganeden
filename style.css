@@ -300,7 +300,6 @@ img {
     position: absolute;
     width: 150px;
     height: auto;
-    filter: drop-shadow(4px 4px 0 rgba(20, 53, 47, 0.2));
     cursor: grab;
     user-select: none;
     touch-action: none;
@@ -310,8 +309,8 @@ img {
     mix-blend-mode: darken;
     background: transparent;
     object-fit: contain;
-    /* Filter to help remove white pixels */
-    filter: drop-shadow(4px 4px 0 rgba(20, 53, 47, 0.2)) contrast(1.1) brightness(1.05);
+    /* Filter to help remove white pixels and improve visibility without shadows */
+    filter: contrast(1.1) brightness(1.05);
 }
 
 .fun-shape:active {
