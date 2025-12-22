@@ -103,9 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 rotation = 0;
             } else {
                 // Desktop: randomize slightly from their CSS anchored positions
-                x = (Math.random() - 0.5) * 100; // +/- 50px
-                y = (Math.random() - 0.5) * 100; // +/- 50px
-                rotation = (Math.random() - 0.5) * 60; // Random tilt
+                x = (Math.random() - 0.5) * 40; // +/- 20px (Reduced from 100)
+                y = (Math.random() - 0.5) * 40; // +/- 20px (Reduced from 100)
+                rotation = (Math.random() - 0.5) * 40; // Reduced rotation spread
             }
 
             // Update DOM immediately

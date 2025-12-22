@@ -304,13 +304,9 @@ img {
     user-select: none;
     touch-action: none;
     will-change: transform;
-    /* Remove white background - using blend mode to help with white backgrounds */
-    /* Note: For best results, use PNG images with transparent backgrounds */
-    mix-blend-mode: darken;
+    /* Removed blend mode and filters as requested */
     background: transparent;
     object-fit: contain;
-    /* Filter to help remove white pixels and improve visibility without shadows */
-    filter: contrast(1.1) brightness(1.05);
 }
 
 .fun-shape:active {
@@ -318,52 +314,61 @@ img {
 }
 
 /* Position the vegetable/fruit images in hero */
+/* Distributed evenly to cover the hero visual area */
+
+/* Top Right */
 .shape-1 {
-    top: 10%;
-    right: 10%;
-    width: 240px;
+    top: 5%;
+    right: 5%;
+    width: 220px;
     z-index: 1;
 }
 
+/* Bottom Left */
 .shape-2 {
-    bottom: 15%;
+    bottom: 10%;
     left: 10%;
-    width: 210px;
+    width: 200px;
     z-index: 2;
 }
 
+/* Center */
 .shape-3 {
-    top: 25%;
-    left: 40%;
-    width: 190px;
+    top: 35%;
+    left: 35%;
+    width: 180px;
     z-index: 3;
 }
 
+/* Mid Right */
 .shape-4 {
     top: 50%;
-    right: 25%;
-    width: 180px;
+    right: 10%;
+    width: 170px;
     z-index: 4;
 }
 
+/* Top Left */
 .shape-5 {
-    top: 5%;
-    left: 20%;
-    width: 170px;
+    top: 10%;
+    left: 10%;
+    width: 160px;
     z-index: 2;
 }
 
+/* Bottom Right-ish */
 .shape-6 {
-    top: 45%;
-    left: 2%;
-    width: 160px;
+    bottom: 5%;
+    right: 30%;
+    width: 150px;
     z-index: 3;
 }
 
+/* Top Center-ish */
 .shape-7 {
-    bottom: 5%;
-    left: 50%;
-    width: 190px;
+    top: 5%;
+    left: 45%;
+    width: 180px;
     z-index: 1;
 }
 
@@ -715,51 +720,51 @@ img {
         height: 300px;
     }
     
-    /* Default mobile vegetable positions */
+    /* Default mobile vegetable positions - Distributed evenly */
     .shape-1 {
-        top: 10%;
+        top: 5%;
         left: 5%;
         right: auto;
-        width: 160px;
+        width: 120px;
     }
     
     .shape-2 {
-        bottom: 10%;
-        left: 5%;
-        right: auto;
-        width: 150px;
+        bottom: 5%;
+        right: 5%;
+        left: auto; /* Override desktop left */
+        width: 115px;
     }
     
     .shape-3 {
-        top: 15%;
-        right: 5%;
-        left: auto;
-        width: 140px;
+        top: 40%;
+        left: 40%;
+        right: auto;
+        width: 110px;
     }
     
     .shape-4 {
-        bottom: 15%;
+        top: 10%;
         right: 5%;
         left: auto;
-        width: 140px;
+        width: 110px;
     }
 
     .shape-5 {
-        top: 5%;
-        left: 30%;
-        width: 130px;
+        bottom: 10%;
+        left: 5%;
+        width: 105px;
     }
 
     .shape-6 {
-        top: 40%;
-        left: -5%;
-        width: 120px;
+        top: 55%;
+        right: 2%;
+        width: 100px;
     }
 
     .shape-7 {
-        bottom: 5%;
-        right: 40%;
-        width: 135px;
+        top: 30%;
+        left: 2%;
+        width: 100px;
     }
 
     .hero-subtitle {
