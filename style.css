@@ -321,28 +321,28 @@ img {
 .shape-1 {
     top: 10%;
     right: 10%;
-    width: 180px;
+    width: 240px;
     z-index: 1;
 }
 
 .shape-2 {
     bottom: 15%;
     left: 10%;
-    width: 160px;
+    width: 210px;
     z-index: 2;
 }
 
 .shape-3 {
     top: 25%;
     left: 40%;
-    width: 150px;
+    width: 190px;
     z-index: 3;
 }
 
 .shape-4 {
     top: 50%;
     right: 25%;
-    width: 140px;
+    width: 180px;
     z-index: 4;
 }
 
@@ -692,28 +692,28 @@ img {
         top: 10%;
         left: 5%;
         right: auto;
-        width: 120px;
+        width: 160px;
     }
     
     .shape-2 {
         bottom: 10%;
         left: 5%;
         right: auto;
-        width: 110px;
+        width: 150px;
     }
     
     .shape-3 {
         top: 15%;
         right: 5%;
         left: auto;
-        width: 100px;
+        width: 140px;
     }
     
     .shape-4 {
         bottom: 15%;
         right: 5%;
         left: auto;
-        width: 100px;
+        width: 140px;
     }
 
     .hero-subtitle {
