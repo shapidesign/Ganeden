@@ -62,4 +62,41 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1000);
         });
     });
+
+    // Blob Cursor Logic
+    const blobs = document.querySelectorAll('.blob');
+    if (blobs.length > 0) {
+        // Configuration
+        const fastDuration = 0.1;
+        const slowDuration = 0.5;
+        const fastEase = 'power3.out';
+        const slowEase = 'power1.out';
+
+        // Initial position (center screen or off-screen)
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+
+        // Track mouse movement
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Animate blobs
+            blobs.forEach((blob, index) => {
+                const isLead = index === 0;
+                gsap.to(blob, {
+                    x: mouseX,
+                    y: mouseY,
+                    duration: isLead ? fastDuration : slowDuration,
+                    ease: isLead ? fastEase : slowEase,
+                    overwrite: 'auto' // ensure new tweens overwrite old ones smoothly
+                });
+            });
+        });
+
+        // Handle window resize (optional, mainly for initial pos if needed)
+        window.addEventListener('resize', () => {
+             // Logic if needed
+        });
+    }
 });

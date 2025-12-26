@@ -76,6 +76,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    cursor: none !important; /* Hide default cursor for blob effect */
+}
+
+/* Exception for iframes or other interactive elements if needed, but for now * is global */
+/* We might want to keep the cursor on mobile, or just hide it on desktop. */
+@media (pointer: coarse) {
+    * {
+        cursor: auto !important;
+    }
 }
 
 html {
@@ -111,6 +120,53 @@ img {
     padding: 0 var(--spacing-unit);
 }
 
+/* Blob Cursor Styles */
+.blob-cursor-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.blob-main {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    filter: url(#blob-filter); /* Apply SVG Filter */
+}
+
+.blob {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    background-color: var(--color-lime); /* Matching theme */
+    opacity: 0.6;
+    box-shadow: 10px 10px 5px 0 rgba(20, 53, 47, 0.4); /* Dark Green Shadow */
+    will-change: transform;
+    /* Initial centered position is handled by JS but defaults to top-left if not set */
+    transform: translate(-50%, -50%); /* Centering handled in JS usually, but here for initial render */
+}
+
+.inner-dot {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Blob Specific Sizes */
+.blob-1 { width: 60px; height: 60px; }
+.blob-2 { width: 125px; height: 125px; }
+.blob-3 { width: 75px; height: 75px; }
+
+.dot-1 { width: 20px; height: 20px; top: 20px; left: 20px; }
+.dot-2 { width: 35px; height: 35px; top: 45px; left: 45px; }
+.dot-3 { width: 25px; height: 25px; top: 25px; left: 25px; }
+
 /* Buttons */
 .btn {
     display: inline-block;
@@ -119,7 +175,7 @@ img {
     font-family: var(--font-heading);
     font-weight: 700;
     font-size: 1.2rem;
-    cursor: pointer;
+    cursor: none; /* Custom cursor */
     border: none;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -168,6 +224,7 @@ img {
 .logo a {
     display: block;
     width: 150px; /* Adjust based on logo needs */
+    cursor: none;
 }
 
 .logo img {
@@ -183,6 +240,7 @@ img {
 .main-nav a {
     font-weight: 500;
     font-size: 1.1rem;
+    cursor: none;
 }
 
 .main-nav a:hover {
@@ -200,7 +258,7 @@ img {
 .cart-btn {
     background: none;
     border: none;
-    cursor: pointer;
+    cursor: none;
     position: relative;
     color: var(--color-dark-green);
 }
@@ -228,7 +286,7 @@ img {
     gap: 6px;
     background: none;
     border: none;
-    cursor: pointer;
+    cursor: none;
 }
 
 .mobile-menu-toggle span {
@@ -381,7 +439,7 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    cursor: pointer;
+    cursor: none;
     transition: transform 0.3s ease;
     mix-blend-mode: darken; /* Blend white backgrounds with container */
     
@@ -486,7 +544,7 @@ img {
     overflow: hidden;
     line-height: 1;
     padding: 1rem 2rem; /* Adjusted padding */
-    cursor: pointer;
+    cursor: none;
     border: none;
     font-weight: 700;
     background: var(--diced-hero-button-bg);
@@ -571,6 +629,7 @@ img {
     white-space: nowrap;
     border-bottom: 2px solid var(--color-dark-green);
     display: flex;
+    cursor: none;
 }
 
 .marquee-content {
@@ -626,6 +685,7 @@ img {
     flex-direction: column;
     justify-content: flex-start; /* Align content to top */
     min-height: 400px; /* Taller for image */
+    cursor: none;
 }
 
 .pack-card:hover {
@@ -726,6 +786,7 @@ img {
     border-radius: var(--border-radius-lg);
     overflow: hidden;
     transition: transform 0.3s ease;
+    cursor: none;
 }
 
 .product-card:hover {
@@ -815,7 +876,7 @@ img {
     border: 2px solid var(--color-dark-green);
     border-radius: var(--border-radius-sm);
     font-weight: bold;
-    cursor: pointer;
+    cursor: none;
     transition: all 0.2s;
     font-family: var(--font-body);
 }
@@ -830,6 +891,7 @@ img {
     background-color: var(--color-dark-green);
     color: var(--color-off-white);
     padding: 4rem 0 2rem;
+    cursor: none;
 }
 
 .footer-container {
@@ -864,6 +926,7 @@ img {
     border: 1px solid var(--color-off-white);
     border-radius: 20px;
     font-size: 0.9rem;
+    cursor: none;
 }
 
 .social-links a:hover {
@@ -907,22 +970,14 @@ img {
         margin-left: 0;
         text-align: center;
         align-items: center;
-        order: 2; /* Visuals first on mobile? Usually hero text is first, let's keep text first if visually pleasing or match original logic */
-        /* Actually user prompt says: flexDirection: isMobile ? 'column' : ... */
-        /* And text is flex: 1. In mobile column, order matters. */
+        order: 2; /* Text after images on mobile */
     }
 
     .diced-hero-visuals {
         width: 100%;
         padding-right: 0;
         margin-bottom: 2rem;
-        order: 1; /* Images on top? Or text? Let's check original logic. */
-        /* Original logic: Text div first, Image div second. */
-        /* Flex direction column -> Text on top. */
-        /* But wait, let's put images on top for visual impact? */
-        /* User prompt code: flexDirection: isMobile ? 'column' : ... */
-        /* The text div is first in DOM. So text on top. */
-        /* Wait, the prompt code has text div first. */
+        order: 1; /* Images first on mobile */
     }
     
     .diced-hero-separator {
@@ -940,6 +995,15 @@ img {
 
     .social-links {
         justify-content: center;
+    }
+    
+    /* Re-enable default cursor on mobile */
+    * {
+        cursor: auto !important;
+    }
+    
+    .blob-cursor-container {
+        display: none; /* Hide custom cursor on mobile */
     }
 }
 

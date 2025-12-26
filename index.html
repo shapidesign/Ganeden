@@ -6,9 +6,39 @@
     <title>שליש גנעדן | Shlish Ganeden</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
-    <!-- Version: 0.3.11 -->
+    <!-- Version: 0.3.12 -->
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
 <body>
+
+    <!-- SVG Filter for Blob Cursor (Hidden) -->
+    <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" aria-hidden="true">
+        <defs>
+            <filter id="blob-filter">
+                <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="30" />
+                <feColorMatrix in="blur" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 35 -10" />
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- Blob Cursor Container -->
+    <div class="blob-cursor-container">
+        <div class="blob-main">
+            <!-- Blob 1 -->
+            <div class="blob blob-1">
+                <div class="inner-dot dot-1"></div>
+            </div>
+            <!-- Blob 2 -->
+            <div class="blob blob-2">
+                <div class="inner-dot dot-2"></div>
+            </div>
+            <!-- Blob 3 -->
+            <div class="blob blob-3">
+                <div class="inner-dot dot-3"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- Sticky Navbar -->
     <header class="site-header">
@@ -331,6 +361,6 @@
     </footer>
 
     <script src="script.js"></script>
-    <!-- Version Tag: v0.3.11 -->
+    <!-- Version Tag: v0.3.12 -->
 </body>
 </html>
