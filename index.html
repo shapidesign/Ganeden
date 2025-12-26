@@ -29,7 +29,7 @@
             </nav>
 
             <div class="header-actions">
-                <button class="cart-btn" aria-label="האוסף שלי" data-magnetic>
+                <button class="cart-btn" aria-label="האוסף שלי">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                     <span class="cart-count">0</span>
                 </button>
@@ -229,50 +229,82 @@
             <h2 class="section-title">השותפים שלנו</h2>
             <p class="partners-subtitle">אנחנו עובדים עם עשרות חקלאים ומגדלים ברחבי הארץ</p>
             <div class="map-container">
-                <svg viewBox="0 0 400 700" class="israel-map">
-                    <!-- Israel outline (simplified) -->
-                    <path d="M 200 50 L 220 80 L 240 120 L 250 180 L 260 240 L 270 320 L 260 400 L 250 480 L 240 560 L 220 620 L 200 660 L 180 620 L 160 560 L 150 480 L 140 400 L 130 320 L 140 240 L 150 180 L 160 120 L 180 80 Z" 
+                <svg viewBox="0 0 300 600" class="israel-map">
+                    <!-- Detailed Israel map outline -->
+                    <path d="M 150 20 
+                             L 155 25 L 160 35 L 165 50 L 168 70 L 170 85 
+                             L 172 95 L 175 105 L 178 120 L 180 140 
+                             L 182 160 L 184 180 L 186 200 L 188 220 
+                             L 189 240 L 190 260 L 191 280 L 192 300 
+                             L 193 320 L 194 340 L 195 360 L 196 380 
+                             L 197 400 L 198 420 L 199 440 L 200 460 
+                             L 198 480 L 195 500 L 190 520 L 185 540 
+                             L 180 555 L 175 565 L 170 572 L 165 577 
+                             L 160 580 L 155 578 L 150 575 L 145 570 
+                             L 140 563 L 135 555 L 130 545 L 125 535 
+                             L 120 525 L 118 515 L 117 505 L 116 495 
+                             L 115 485 L 114 475 L 113 465 L 112 455 
+                             L 111 445 L 110 435 L 109 425 L 108 415 
+                             L 107 405 L 106 395 L 105 385 L 104 375 
+                             L 103 365 L 102 355 L 101 345 L 100 335 
+                             L 99 325 L 98 315 L 97 305 L 96 295 
+                             L 95 285 L 94 275 L 93 265 L 92 255 
+                             L 91 245 L 90 235 L 90 225 L 91 215 
+                             L 93 205 L 96 195 L 100 185 L 105 175 
+                             L 110 165 L 115 155 L 120 145 L 125 135 
+                             L 130 125 L 135 115 L 138 105 L 140 95 
+                             L 142 85 L 144 70 L 146 50 L 148 35 Z" 
                           class="map-outline" 
-                          fill="var(--color-lime)" 
-                          stroke="var(--color-dark-green)" 
-                          stroke-width="3" 
-                          opacity="0.3"/>
+                          fill="#efede6" 
+                          stroke="#1d7a65" 
+                          stroke-width="2.5"/>
                     
-                    <!-- Partner Locations (Orange Dots) -->
-                    <!-- North -->
+                    <!-- Partner Locations (Orange Dots) - Geographically accurate -->
+                    <!-- North - Galilee -->
                     <g class="partner-dot" data-name="משק לוי - כפר יהושע" data-products="גזר, בטטה">
-                        <circle cx="200" cy="150" r="8" fill="var(--color-orange)" stroke="var(--color-dark-green)" stroke-width="2" class="dot-pulse"/>
+                        <circle cx="140" cy="130" r="8" class="dot-circle"/>
                     </g>
-                    <g class="partner-dot" data-name="משק אריה - בית חנן" data-products="מלפפון, חסה">
-                        <circle cx="185" cy="320" r="8" fill="var(--color-orange)" stroke="var(--color-dark-green)" stroke-width="2" class="dot-pulse"/>
+                    <g class="partner-dot" data-name="משק טל - קיבוץ גבע" data-products="גזר אורגני">
+                        <circle cx="152" cy="160" r="8" class="dot-circle"/>
                     </g>
-                    <g class="partner-dot" data-name="פרדס הדרים - רחובות" data-products="לימון, תפוז">
-                        <circle cx="195" cy="350" r="8" fill="var(--color-orange)" stroke="var(--color-dark-green)" stroke-width="2" class="dot-pulse"/>
-                    </g>
+                    
+                    <!-- North - Haifa area -->
                     <g class="partner-dot" data-name="משק בננות החוף - זיכרון יעקב" data-products="בננה">
-                        <circle cx="180" cy="240" r="8" fill="var(--color-orange)" stroke="var(--color-dark-green)" stroke-width="2" class="dot-pulse"/>
+                        <circle cx="108" cy="210" r="8" class="dot-circle"/>
                     </g>
+                    
+                    <!-- Center - Sharon -->
                     <g class="partner-dot" data-name="פרדס שמש - קדימה" data-products="תפוז, קלמנטינה">
-                        <circle cx="190" cy="300" r="8" fill="var(--color-orange)" stroke="var(--color-dark-green)" stroke-width="2" class="dot-pulse"/>
+                        <circle cx="110" cy="260" r="8" class="dot-circle"/>
                     </g>
-                    <!-- Center -->
                     <g class="partner-dot" data-name="שדות התות - הוד השרון" data-products="תות, ענבים">
-                        <circle cx="195" cy="330" r="8" fill="var(--color-orange)" stroke="var(--color-dark-green)" stroke-width="2" class="dot-pulse"/>
+                        <circle cx="115" cy="290" r="8" class="dot-circle"/>
                     </g>
-                    <!-- South -->
+                    
+                    <!-- Center - Tel Aviv area -->
+                    <g class="partner-dot" data-name="משק אריה - בית חנן" data-products="מלפפון, חסה">
+                        <circle cx="108" cy="320" r="8" class="dot-circle"/>
+                    </g>
+                    
+                    <!-- Center - Rehovot area -->
+                    <g class="partner-dot" data-name="פרדס הדרים - רחובות" data-products="לימון, תפוז">
+                        <circle cx="115" cy="345" r="8" class="dot-circle"/>
+                    </g>
+                    
+                    <!-- South - Negev -->
+                    <g class="partner-dot" data-name="חוות הרימון - מצפה רמון" data-products="רימונים, תמרים">
+                        <circle cx="145" cy="480" r="8" class="dot-circle"/>
+                    </g>
                     <g class="partner-dot" data-name="משק דני - עין יהב" data-products="עגבניה, מלפפון">
-                        <circle cx="210" cy="550" r="8" fill="var(--color-orange)" stroke="var(--color-dark-green)" stroke-width="2" class="dot-pulse"/>
+                        <circle cx="165" cy="540" r="8" class="dot-circle"/>
                     </g>
                     <g class="partner-dot" data-name="משק כהן - מושב חצבה" data-products="חציל, פלפל">
-                        <circle cx="205" cy="600" r="8" fill="var(--color-orange)" stroke="var(--color-dark-green)" stroke-width="2" class="dot-pulse"/>
+                        <circle cx="155" cy="565" r="8" class="dot-circle"/>
                     </g>
                     
-                    <!-- Additional partners for visual interest -->
-                    <g class="partner-dot" data-name="משק טל - קיבוץ גבע" data-products="גזר אורגני">
-                        <circle cx="195" cy="200" r="8" fill="var(--color-orange)" stroke="var(--color-dark-green)" stroke-width="2" class="dot-pulse"/>
-                    </g>
-                    <g class="partner-dot" data-name="חוות הרימון - מצפה רמון" data-products="רימונים, תמרים">
-                        <circle cx="195" cy="500" r="8" fill="var(--color-orange)" stroke="var(--color-dark-green)" stroke-width="2" class="dot-pulse"/>
+                    <!-- East - Jordan Valley -->
+                    <g class="partner-dot" data-name="ירקות הבקעה - בקעת הירדן" data-products="תמר, פלפל">
+                        <circle cx="178" cy="180" r="8" class="dot-circle"/>
                     </g>
                 </svg>
                 
