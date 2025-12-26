@@ -192,12 +192,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const mapContainer = document.querySelector('.map-container');
 
     if (tooltip && partnerDots.length > 0 && mapContainer) {
-        // Cache the map container rect for better performance
-        let mapRect = mapContainer.getBoundingClientRect();
+        console.log('Map dots initialized:', partnerDots.length);
         
-        // Update rect on window resize
+        // Update map rect dynamically
+        const getMapRect = () => mapContainer.getBoundingClientRect();
+        
+        // Update rect on window resize and scroll
+        let mapRect = getMapRect();
         window.addEventListener('resize', () => {
-            mapRect = mapContainer.getBoundingClientRect();
+            mapRect = getMapRect();
+        });
+        window.addEventListener('scroll', () => {
+            mapRect = getMapRect();
         });
 
         partnerDots.forEach(dot => {
@@ -205,18 +211,23 @@ document.addEventListener('DOMContentLoaded', () => {
             
             dot.addEventListener('mouseenter', (e) => {
                 isHovering = true;
+                mapRect = getMapRect(); // Update rect on each hover
+                
                 const name = dot.getAttribute('data-name');
                 const products = dot.getAttribute('data-products');
+                
+                console.log('Hovering dot:', name);
                 
                 tooltip.querySelector('.tooltip-title').textContent = name;
                 tooltip.querySelector('.tooltip-products').textContent = products;
                 tooltip.classList.add('active');
                 
-                // Position tooltip immediately
+                // Position tooltip relative to map container
                 const x = e.clientX - mapRect.left;
                 const y = e.clientY - mapRect.top;
                 tooltip.style.left = `${x + 20}px`;
                 tooltip.style.top = `${y - 40}px`;
+                tooltip.style.visibility = 'visible';
             });
 
             dot.addEventListener('mousemove', (e) => {
@@ -233,7 +244,14 @@ document.addEventListener('DOMContentLoaded', () => {
             dot.addEventListener('mouseleave', () => {
                 isHovering = false;
                 tooltip.classList.remove('active');
+                tooltip.style.visibility = 'hidden';
             });
+        });
+    } else {
+        console.log('Map initialization failed:', {
+            tooltip: !!tooltip,
+            dots: partnerDots.length,
+            container: !!mapContainer
         });
     }
 });
