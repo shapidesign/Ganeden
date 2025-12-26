@@ -216,6 +216,8 @@ class MagneticCursor {
 
             const handlePointerEnter = () => {
                 this.state.hover.isHovered = true;
+                
+                // Get the actual visual bounds (accounting for transforms)
                 const bounds = el.getBoundingClientRect();
                 const computedStyle = window.getComputedStyle(el);
                 
@@ -223,6 +225,9 @@ class MagneticCursor {
                 const magneticColor = el.getAttribute('data-magnetic-color') || this.options.cursorColor;
 
                 gsap.killTweensOf(this.cursorEl);
+                
+                // Position cursor to wrap around the element with padding
+                // Account for the cursor's transform origin being top-left
                 gsap.to(this.cursorEl, {
                     x: bounds.left - this.options.hoverPadding,
                     y: bounds.top - this.options.hoverPadding,
@@ -236,6 +241,7 @@ class MagneticCursor {
                     rotate: 0,
                     duration: 0.4,
                     ease: 'power3.out',
+                    transformOrigin: '0 0', // Ensure consistent positioning from top-left
                 });
             };
 
@@ -254,6 +260,7 @@ class MagneticCursor {
                     border: 'none', // Remove outline
                     duration: 0.4,
                     ease: 'power3.out',
+                    transformOrigin: '0 0', // Keep consistent
                 });
                 
                 // Reset element position

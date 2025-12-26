@@ -89,6 +89,8 @@
 
 html {
     scroll-behavior: smooth;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
 }
 
 body {
@@ -97,6 +99,8 @@ body {
     color: var(--color-dark-green);
     line-height: 1.6;
     font-size: 18px; /* Slightly larger for readability */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
 }
 
 a {
@@ -371,7 +375,7 @@ img {
     font-family: var(--font-accent);
     color: var(--diced-hero-top-text);
     font-size: 2rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem; /* Reduced from 0.5rem */
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.5s forwards;
@@ -559,6 +563,7 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center; /* Center vertically */
     overflow: hidden;
     line-height: 1;
     padding: 1rem 2rem; /* Adjusted padding */
@@ -573,6 +578,7 @@ img {
     font-family: var(--font-heading);
     font-size: 1.2rem;
     width: 200px; /* Fixed width for consistent flip */
+    text-align: center; /* Center text horizontally */
 }
 
 .chronicleButton:hover {
@@ -584,6 +590,8 @@ img {
     position: relative;
     display: block;
     perspective: 108px;
+    width: 100%; /* Full width */
+    text-align: center; /* Center text */
 }
 
 .chronicleButton span:nth-of-type(2) {
@@ -592,6 +600,7 @@ img {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
+    text-align: center; /* Center text */
 }
 
 .chronicleButton em {
