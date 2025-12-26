@@ -67,7 +67,8 @@ class MagneticCursor {
             height: `${this.options.cursorSize}px`,
             borderRadius: this.options.shape === 'circle' ? '50%' : this.options.shape === 'square' ? '0' : '8px',
             opacity: 0, // Start hidden
-            willChange: 'transform, width, height, border-radius, background-color'
+            willChange: 'transform, width, height, border-radius, background-color',
+            boxSizing: 'border-box' // Ensure borders are included in width/height
         });
         document.body.appendChild(this.cursorEl);
     }
@@ -224,24 +225,32 @@ class MagneticCursor {
                 // Optional: Custom color per element
                 const magneticColor = el.getAttribute('data-magnetic-color') || this.options.cursorColor;
 
+                // Border width for calculations
+                const borderWidth = 2;
+                
+                // Perfect pixel alignment:
+                // Position the cursor so its OUTER edge is hoverPadding pixels away from the button
+                const targetX = bounds.left - this.options.hoverPadding;
+                const targetY = bounds.top - this.options.hoverPadding;
+                const targetWidth = bounds.width + (this.options.hoverPadding * 2);
+                const targetHeight = bounds.height + (this.options.hoverPadding * 2);
+
                 gsap.killTweensOf(this.cursorEl);
                 
                 // Position cursor to wrap around the element with padding
-                // Account for the cursor's transform origin being top-left
                 gsap.to(this.cursorEl, {
-                    x: bounds.left - this.options.hoverPadding,
-                    y: bounds.top - this.options.hoverPadding,
-                    width: bounds.width + this.options.hoverPadding * 2,
-                    height: bounds.height + this.options.hoverPadding * 2,
+                    x: targetX,
+                    y: targetY,
+                    width: targetWidth,
+                    height: targetHeight,
                     borderRadius: computedStyle.borderRadius,
-                    backgroundColor: 'transparent', // Make it an outline
-                    border: `2px solid ${magneticColor}`, // Outline style
+                    backgroundColor: 'transparent',
+                    border: `${borderWidth}px solid ${magneticColor}`,
                     scaleX: 1,
                     scaleY: 1,
-                    rotate: 0,
+                    rotation: 0,
                     duration: 0.4,
                     ease: 'power3.out',
-                    transformOrigin: '0 0', // Ensure consistent positioning from top-left
                 });
             };
 
@@ -250,6 +259,8 @@ class MagneticCursor {
                 const shapeBorderRadius = this.options.shape === 'circle' ? '50%' : this.options.shape === 'square' ? '0' : '8px';
 
                 gsap.killTweensOf(this.cursorEl);
+                
+                // Reset to follow cursor position
                 gsap.to(this.cursorEl, {
                     x: this.state.pos.target.x,
                     y: this.state.pos.target.y,
@@ -257,10 +268,9 @@ class MagneticCursor {
                     height: this.options.cursorSize,
                     borderRadius: shapeBorderRadius,
                     backgroundColor: this.options.cursorColor,
-                    border: 'none', // Remove outline
+                    border: 'none',
                     duration: 0.4,
                     ease: 'power3.out',
-                    transformOrigin: '0 0', // Keep consistent
                 });
                 
                 // Reset element position
