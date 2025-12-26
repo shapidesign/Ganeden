@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cart Counter
     let cartCount = 0;
     const cartCountElement = document.querySelector('.cart-count');
-    const addToCartButtons = document.querySelectorAll('.btn-add-cart');
+    const addToCartButtons = document.querySelectorAll('.btn-add-cart, .btn-add-pack');
 
     addToCartButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -82,5 +82,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Start the carousel
         setInterval(showNextImage, CHANGE_INTERVAL);
+    }
+
+    // Interactive Map - Partner Dots
+    const partnerDots = document.querySelectorAll('.partner-dot');
+    const tooltip = document.getElementById('partner-tooltip');
+
+    if (tooltip && partnerDots.length > 0) {
+        partnerDots.forEach(dot => {
+            dot.addEventListener('mouseenter', (e) => {
+                const name = dot.getAttribute('data-name');
+                const products = dot.getAttribute('data-products');
+                
+                tooltip.querySelector('.tooltip-title').textContent = name;
+                tooltip.querySelector('.tooltip-products').textContent = products;
+                tooltip.classList.add('active');
+            });
+
+            dot.addEventListener('mousemove', (e) => {
+                const mapContainer = document.querySelector('.map-container');
+                const rect = mapContainer.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                tooltip.style.left = `${x + 20}px`;
+                tooltip.style.top = `${y - 40}px`;
+            });
+
+            dot.addEventListener('mouseleave', () => {
+                tooltip.classList.remove('active');
+            });
+
+            // Add click animation
+            dot.addEventListener('click', () => {
+                dot.querySelector('circle').style.animation = 'none';
+                setTimeout(() => {
+                    dot.querySelector('circle').style.animation = 'pulse 2s ease-in-out infinite';
+                }, 10);
+            });
+        });
     }
 });

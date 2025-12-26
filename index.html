@@ -6,7 +6,7 @@
     <title>שליש גנעדן | Shlish Ganeden</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
-    <!-- Version: 0.4.2 -->
+    <!-- Version: 0.5.0 -->
 </head>
 <body>
 
@@ -24,8 +24,7 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="#packs">מארזים</a></li>
-                    <li><a href="#shop">הנבחרת</a></li>
-                    <li><a href="#about">עלינו</a></li>
+                    <li><a href="#partners">השותפים שלנו</a></li>
                 </ul>
             </nav>
 
@@ -48,8 +47,7 @@
         <nav>
             <ul>
                 <li><a href="#packs">מארזים</a></li>
-                <li><a href="#shop">הנבחרת</a></li>
-                <li><a href="#about">עלינו</a></li>
+                <li><a href="#partners">השותפים שלנו</a></li>
             </ul>
         </nav>
     </div>
@@ -111,17 +109,6 @@
         </div>
     </div>
 
-    <!-- About Section -->
-    <section class="about-section" id="about" style="padding: 4rem 0; background-color: white; text-align: center;">
-        <div class="container">
-            <h3 class="accent-header">המטרה שלנו</h3>
-            <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 1.5rem;">בכל שנה שליש מהתוצרת החקלאית בעולם נזרקת לפח.</h2>
-            <p style="max-width: 800px; margin: 0 auto; font-size: 1.2rem;">
-                לא כי היא לא טעימה או איכותית, אלא כי הפירות והירקות ״לא יפים מספיק״. המטרה שלנו - להקטין את בזבוז המזון ולאפשר לצרכן גישה לפירות איכותיים וטעימים שהוגדרו ״לא יפים״ במחיר מוזל. בשליש גנעדן אנחנו מאמינים שאיכות אמיתית לא תלויה במראה חיצוני. ארזנו לכם את התוצרת החקלאית הכי טרייה, טעימה ומיוחדת שיש, ושידכנו אותם ביחד בשביל המנה הבאה שלכם. ככה זה בטבע - אין פילטרים.
-            </p>
-        </div>
-    </section>
-
     <!-- Packs Section -->
     <section class="packs-section" id="packs">
         <div class="container">
@@ -136,7 +123,7 @@
                         <h3>מארז ירקות לתנור</h3>
                         <p>גזר, תפו״א ובטטה</p>
                         <p class="pack-price">₪3</p>
-                        <button class="btn btn-primary">הזמן עכשיו</button>
+                        <button class="btn btn-primary btn-add-pack">הזמן עכשיו</button>
                     </div>
                 </article>
 
@@ -149,7 +136,7 @@
                         <h3>פירות לשייק</h3>
                         <p>מארז פירות העונה</p>
                         <p class="pack-price">₪5</p>
-                        <button class="btn btn-primary">הזמן עכשיו</button>
+                        <button class="btn btn-primary btn-add-pack">הזמן עכשיו</button>
                     </div>
                 </article>
 
@@ -163,140 +150,98 @@
                         <h3>מארז שקשוקה</h3>
                         <p>בצל, עגבניות ופלפלים - רק להוסיף ביצים!</p>
                         <p class="pack-price">₪7</p>
-                        <button class="btn btn-primary">הזמן עכשיו</button>
+                        <button class="btn btn-primary btn-add-pack">הזמן עכשיו</button>
                     </div>
                 </article>
             </div>
         </div>
     </section>
 
-    <!-- Shop / Product Grid -->
-    <section class="shop-section" id="shop">
+    <!-- Where to Find Us - Supermarket Logos Banner -->
+    <section class="logos-banner-section">
+        <div class="logos-banner-container">
+            <h3 class="logos-banner-title">איפה אפשר למצוא אותנו</h3>
+            <div class="logos-marquee-container">
+                <div class="logos-marquee-content">
+                    <img src="images/logos/ampm.svg" alt="AM:PM" class="partner-logo">
+                    <img src="images/logos/wolt.png" alt="Wolt" class="partner-logo">
+                    <img src="images/logos/keshet.png" alt="Keshet" class="partner-logo">
+                    <img src="images/logos/yango deli.png" alt="Yango Deli" class="partner-logo">
+                    <img src="images/logos/duvdevan.png" alt="Duvdevan" class="partner-logo">
+                    <img src="images/logos/tivtaam.avif" alt="Tiv Taam" class="partner-logo">
+                    <img src="images/logos/yuda.png" alt="Yuda" class="partner-logo">
+                </div>
+                <div class="logos-marquee-content">
+                    <img src="images/logos/ampm.svg" alt="AM:PM" class="partner-logo">
+                    <img src="images/logos/wolt.png" alt="Wolt" class="partner-logo">
+                    <img src="images/logos/keshet.png" alt="Keshet" class="partner-logo">
+                    <img src="images/logos/yango deli.png" alt="Yango Deli" class="partner-logo">
+                    <img src="images/logos/duvdevan.png" alt="Duvdevan" class="partner-logo">
+                    <img src="images/logos/tivtaam.avif" alt="Tiv Taam" class="partner-logo">
+                    <img src="images/logos/yuda.png" alt="Yuda" class="partner-logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Map Section -->
+    <section class="partners-section" id="partners">
         <div class="container">
-            <h2 class="section-title">מציאות של השבוע</h2>
-            <div class="product-grid">
-                <!-- Product Card 1: Cucumber -->
-                <article class="product-card">
-                    <div class="card-image">
-                        <span class="badge sale-badge">הזדמנות אחרונה</span>
-                        <div class="placeholder-img" style="background-color: #ffcccc;">
-                             <img src="images/cucumber.jpg" alt="The Twisted Cucumber">
-                        </div>
-                    </div>
-                    <div class="card-details">
-                        <h3>מלפפון</h3>
-                        <p class="farm-info">משק אריה, בית חנן</p>
-                        <p class="price">₪1.90 <span class="unit">לק"ג</span></p>
-                        <button class="btn btn-add-cart">צרף לאוסף</button>
-                    </div>
-                </article>
-
-                <!-- Product Card 2: Carrot -->
-                <article class="product-card">
-                    <div class="card-image">
-                         <div class="placeholder-img" style="background-color: #ffeb99;">
-                            <img src="images/carrot.jpg" alt="גזר סולו">
-                         </div>
-                    </div>
-                    <div class="card-details">
-                        <h3>גזר</h3>
-                        <p class="farm-info">משק לוי, כפר יהושע</p>
-                        <p class="price">₪3 <span class="unit">לק"ג</span></p>
-                        <button class="btn btn-add-cart">צרף לאוסף</button>
-                    </div>
-                </article>
-
-                <!-- Product Card 3: Banana -->
-                <article class="product-card">
-                    <div class="card-image">
-                        <span class="badge new-badge">אוסף חדש</span>
-                         <div class="placeholder-img" style="background-color: #ffe6e6;">
-                            <img src="images/banana.jpg" alt="בננה תאומים">
-                         </div>
-                    </div>
-                    <div class="card-details">
-                        <h3>בננה</h3>
-                        <p class="farm-info">משק בננות החוף, זיכרון יעקב</p>
-                        <p class="price">₪4 <span class="unit">לק"ג</span></p>
-                        <button class="btn btn-add-cart">צרף לאוסף</button>
-                    </div>
-                </article>
-
-                <!-- Product Card 4: Tomato -->
-                <article class="product-card">
-                    <div class="card-image">
-                         <div class="placeholder-img" style="background-color: #ffcccc;">
-                            <img src="images/tomato.jpg" alt="עגבניית אף">
-                         </div>
-                    </div>
-                    <div class="card-details">
-                        <h3>עגבניה</h3>
-                        <p class="farm-info">משק דני, עין יהב</p>
-                        <p class="price">₪1.90 <span class="unit">לק"ג</span></p>
-                        <button class="btn btn-add-cart">צרף לאוסף</button>
-                    </div>
-                </article>
-
-                <!-- Product Card 5: Lemon -->
-                <article class="product-card">
-                    <div class="card-image">
-                         <div class="placeholder-img" style="background-color: #fff9c4;">
-                            <img src="images/lemon.jpg" alt="לימון גבשושי">
-                         </div>
-                    </div>
-                    <div class="card-details">
-                        <h3>לימון</h3>
-                        <p class="farm-info">פרדס הדרים, רחובות</p>
-                        <p class="price">₪4 <span class="unit">לק"ג</span></p>
-                        <button class="btn btn-add-cart">צרף לאוסף</button>
-                    </div>
-                </article>
-
-                <!-- Product Card 6: Orange -->
-                <article class="product-card">
-                    <div class="card-image">
-                        <span class="badge sale-badge">מיוחד</span>
-                         <div class="placeholder-img" style="background-color: #ffe0b2;">
-                            <img src="images/orange.jpg" alt="תפוז עם צ'ופצ'יק">
-                         </div>
-                    </div>
-                    <div class="card-details">
-                        <h3>תפוז</h3>
-                        <p class="farm-info">פרדס שמש, קדימה</p>
-                        <p class="price">₪3.5 <span class="unit">לק"ג</span></p>
-                        <button class="btn btn-add-cart">צרף לאוסף</button>
-                    </div>
-                </article>
-
-                <!-- Product Card 7: Eggplant -->
-                <article class="product-card">
-                    <div class="card-image">
-                         <div class="placeholder-img" style="background-color: #e8d5e8;">
-                            <img src="images/eggplant.jpg" alt="חציל אוניל">
-                         </div>
-                    </div>
-                    <div class="card-details">
-                        <h3>חציל</h3>
-                        <p class="farm-info">משק כהן, מושב חצבה</p>
-                        <p class="price">₪4.50 <span class="unit">לק"ג</span></p>
-                        <button class="btn btn-add-cart">צרף לאוסף</button>
-                    </div>
-                </article>
-
-                <!-- Product Card 8: Strawberry -->
-                <article class="product-card">
-                    <div class="card-image">
-                         <div class="placeholder-img" style="background-color: #ffe6e6;">
-                            <img src="images/strawberry.jpg" alt="תות פרה">
-                         </div>
-                    </div>
-                    <div class="card-details">
-                        <h3>תות</h3>
-                        <p class="farm-info">שדות התות, הוד השרון</p>
-                        <p class="price">₪8.90 <span class="unit">לק"ג</span></p>
-                        <button class="btn btn-add-cart">צרף לאוסף</button>
-                    </div>
-                </article>
+            <h2 class="section-title">השותפים שלנו</h2>
+            <p class="partners-subtitle">אנחנו עובדים עם עשרות חקלאים ומגדלים ברחבי הארץ</p>
+            <div class="map-container">
+                <svg viewBox="0 0 400 700" class="israel-map">
+                    <!-- Israel outline (simplified) -->
+                    <path d="M 200 50 L 220 80 L 240 120 L 250 180 L 260 240 L 270 320 L 260 400 L 250 480 L 240 560 L 220 620 L 200 660 L 180 620 L 160 560 L 150 480 L 140 400 L 130 320 L 140 240 L 150 180 L 160 120 L 180 80 Z" 
+                          class="map-outline" 
+                          fill="var(--color-lime)" 
+                          stroke="var(--color-dark-green)" 
+                          stroke-width="3" 
+                          opacity="0.3"/>
+                    
+                    <!-- Partner Locations (Orange Dots) -->
+                    <!-- North -->
+                    <g class="partner-dot" data-name="משק לוי - כפר יהושע" data-products="גזר, בטטה">
+                        <circle cx="200" cy="150" r="8" fill="var(--color-orange)" stroke="var(--color-dark-green)" stroke-width="2" class="dot-pulse"/>
+                    </g>
+                    <g class="partner-dot" data-name="משק אריה - בית חנן" data-products="מלפפון, חסה">
+                        <circle cx="185" cy="320" r="8" fill="var(--color-orange)" stroke="var(--color-dark-green)" stroke-width="2" class="dot-pulse"/>
+                    </g>
+                    <g class="partner-dot" data-name="פרדס הדרים - רחובות" data-products="לימון, תפוז">
+                        <circle cx="195" cy="350" r="8" fill="var(--color-orange)" stroke="var(--color-dark-green)" stroke-width="2" class="dot-pulse"/>
+                    </g>
+                    <g class="partner-dot" data-name="משק בננות החוף - זיכרון יעקב" data-products="בננה">
+                        <circle cx="180" cy="240" r="8" fill="var(--color-orange)" stroke="var(--color-dark-green)" stroke-width="2" class="dot-pulse"/>
+                    </g>
+                    <g class="partner-dot" data-name="פרדס שמש - קדימה" data-products="תפוז, קלמנטינה">
+                        <circle cx="190" cy="300" r="8" fill="var(--color-orange)" stroke="var(--color-dark-green)" stroke-width="2" class="dot-pulse"/>
+                    </g>
+                    <!-- Center -->
+                    <g class="partner-dot" data-name="שדות התות - הוד השרון" data-products="תות, ענבים">
+                        <circle cx="195" cy="330" r="8" fill="var(--color-orange)" stroke="var(--color-dark-green)" stroke-width="2" class="dot-pulse"/>
+                    </g>
+                    <!-- South -->
+                    <g class="partner-dot" data-name="משק דני - עין יהב" data-products="עגבניה, מלפפון">
+                        <circle cx="210" cy="550" r="8" fill="var(--color-orange)" stroke="var(--color-dark-green)" stroke-width="2" class="dot-pulse"/>
+                    </g>
+                    <g class="partner-dot" data-name="משק כהן - מושב חצבה" data-products="חציל, פלפל">
+                        <circle cx="205" cy="600" r="8" fill="var(--color-orange)" stroke="var(--color-dark-green)" stroke-width="2" class="dot-pulse"/>
+                    </g>
+                    
+                    <!-- Additional partners for visual interest -->
+                    <g class="partner-dot" data-name="משק טל - קיבוץ גבע" data-products="גזר אורגני">
+                        <circle cx="195" cy="200" r="8" fill="var(--color-orange)" stroke="var(--color-dark-green)" stroke-width="2" class="dot-pulse"/>
+                    </g>
+                    <g class="partner-dot" data-name="חוות הרימון - מצפה רמון" data-products="רימונים, תמרים">
+                        <circle cx="195" cy="500" r="8" fill="var(--color-orange)" stroke="var(--color-dark-green)" stroke-width="2" class="dot-pulse"/>
+                    </g>
+                </svg>
+                
+                <!-- Tooltip for partner info -->
+                <div class="partner-tooltip" id="partner-tooltip">
+                    <h4 class="tooltip-title"></h4>
+                    <p class="tooltip-products"></p>
+                </div>
             </div>
         </div>
     </section>
@@ -342,6 +287,6 @@
         });
     </script>
     <script src="script.js"></script>
-    <!-- Version Tag: v0.4.2 -->
+    <!-- Version Tag: v0.5.0 -->
 </body>
 </html>
