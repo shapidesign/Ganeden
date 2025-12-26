@@ -815,7 +815,7 @@ img {
 }
 
 .map-container {
-    max-width: 500px;
+    max-width: 400px;
     margin: 0 auto;
     position: relative;
     padding: 2rem;
@@ -828,8 +828,12 @@ img {
     filter: drop-shadow(0 2px 8px rgba(29, 122, 101, 0.15));
 }
 
-.map-outline {
+.map-region {
     transition: all 0.3s ease;
+}
+
+.map-region:hover {
+    fill: rgba(204, 222, 112, 0.2);
 }
 
 .partner-dot {
