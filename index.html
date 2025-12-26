@@ -6,7 +6,7 @@
     <title>שליש גנעדן | Shlish Ganeden</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
-    <!-- Version: 0.1.2 -->
+    <!-- Version: 0.3.11 -->
 </head>
 <body>
 
@@ -52,27 +52,47 @@
         </nav>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container hero-container">
-            <div class="hero-content">
-                <h1>לטבע אין פילטרים.</h1>
-                <p class="hero-subtitle"> אנחנו מביאים לכם את הטבע בכל הצורות והגדלים, ישירות מהחקלאי למדף ולצלחת שלכם.</p>
-                <a href="#packs" class="btn btn-primary">למארזים שלנו</a>
+    <!-- Diced Hero Section -->
+    <main class="diced-hero">
+        <div class="diced-hero-content">
+            <div>
+                <span class="diced-hero-top-text">גלו את</span>
+                <h1 class="diced-hero-main-text">
+                    <span>הטבע האמיתי</span>
+                </h1>
+                <hr class="diced-hero-separator" />
+                <p class="diced-hero-sub-text">
+                    אנחנו מביאים לכם את הטבע בכל הצורות והגדלים, ישירות מהחקלאי למדף ולצלחת שלכם.
+                </p>
             </div>
-            <div class="hero-visuals">
-                <div class="fun-shapes">
-                    <img src="images/display1.jpg" alt="ירק מוזר" class="fun-shape shape-1">
-                    <img src="images/display2.jpg" alt="ירק מוזר" class="fun-shape shape-2">
-                    <img src="images/display3.jpg" alt="ירק מוזר" class="fun-shape shape-3">
-                    <img src="images/display4.jpg" alt="ירק מוזר" class="fun-shape shape-4">
-                    <img src="images/eggplant.jpg" alt="חציל מוזר" class="fun-shape shape-5">
-                    <img src="images/strawberry.jpg" alt="תות מוזר" class="fun-shape shape-6">
-                    <img src="images/carrot.jpg" alt="גזר מוזר" class="fun-shape shape-7">
+            <div class="diced-hero-actions">
+                <a href="#packs" class="chronicleButton">
+                    <span><em>למארזים שלנו</em></span>
+                    <span><em>למארזים שלנו</em></span>
+                </a>
+            </div>
+        </div>
+        <div class="diced-hero-visuals">
+            <div class="diced-grid">
+                <!-- Top Right (RTL: First item is Right) -->
+                <div class="diced-grid-item">
+                    <img src="images/display1.jpg" alt="ירק מיוחד" class="warped-image top-right">
+                </div>
+                <!-- Top Left -->
+                <div class="diced-grid-item">
+                    <img src="images/display2.jpg" alt="ירק מיוחד" class="warped-image top-left">
+                </div>
+                <!-- Bottom Right -->
+                <div class="diced-grid-item">
+                    <img src="images/display3.jpg" alt="ירק מיוחד" class="warped-image bottom-right">
+                </div>
+                <!-- Bottom Left -->
+                <div class="diced-grid-item">
+                    <img src="images/display4.jpg" alt="ירק מיוחד" class="warped-image bottom-left">
                 </div>
             </div>
         </div>
-    </section>
+    </main>
 
     <!-- Marquee Banner -->
     <div class="marquee-container">
@@ -92,7 +112,7 @@
         </div>
     </div>
 
-    <!-- About Section (New) -->
+    <!-- About Section -->
     <section class="about-section" id="about" style="padding: 4rem 0; background-color: white; text-align: center;">
         <div class="container">
             <h3 class="accent-header">המטרה שלנו</h3>
@@ -103,7 +123,7 @@
         </div>
     </section>
 
-    <!-- Packs Section (New) -->
+    <!-- Packs Section -->
     <section class="packs-section" id="packs">
         <div class="container">
             <h2 class="section-title">המארזים שלנו</h2>
@@ -187,7 +207,7 @@
                     </div>
                 </article>
 
-                <!-- Product Card 3: Banana (Replaces Eggplant) -->
+                <!-- Product Card 3: Banana -->
                 <article class="product-card">
                     <div class="card-image">
                         <span class="badge new-badge">אוסף חדש</span>
@@ -203,7 +223,7 @@
                     </div>
                 </article>
 
-                <!-- Product Card 4: Tomato (Replaces Pepper) -->
+                <!-- Product Card 4: Tomato -->
                 <article class="product-card">
                     <div class="card-image">
                          <div class="placeholder-img" style="background-color: #ffcccc;">
@@ -218,7 +238,7 @@
                     </div>
                 </article>
 
-                <!-- Product Card 5: Lemon (New) -->
+                <!-- Product Card 5: Lemon -->
                 <article class="product-card">
                     <div class="card-image">
                          <div class="placeholder-img" style="background-color: #fff9c4;">
@@ -233,7 +253,7 @@
                     </div>
                 </article>
 
-                <!-- Product Card 6: Orange (New) -->
+                <!-- Product Card 6: Orange -->
                 <article class="product-card">
                     <div class="card-image">
                         <span class="badge sale-badge">מיוחד</span>
@@ -311,6 +331,6 @@
     </footer>
 
     <script src="script.js"></script>
-    <!-- Version Tag: v0.3.10 -->
+    <!-- Version Tag: v0.3.11 -->
 </body>
 </html>

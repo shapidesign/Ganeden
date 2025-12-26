@@ -15,6 +15,17 @@
     --border-radius-lg: 16px;
     --border-radius-sm: 8px;
     --shadow-card: 0 4px 12px rgba(20, 53, 47, 0.1);
+
+    /* Diced Hero Variables */
+    --diced-hero-top-text: var(--color-dark-green);
+    --diced-hero-gradient-from: var(--color-primary-green);
+    --diced-hero-gradient-to: var(--color-lime);
+    --diced-hero-separator: var(--color-orange);
+    --diced-hero-sub-text: var(--color-dark-green);
+    --diced-hero-button-bg: var(--color-primary-green);
+    --diced-hero-button-fg: #ffffff;
+    --diced-hero-button-hover-bg: var(--color-dark-green);
+    --diced-hero-button-hover-fg: var(--color-lime);
 }
 
 /* Font Face Definitions */
@@ -251,128 +262,304 @@ img {
     gap: 1.5rem;
 }
 
-/* Hero Section */
-.hero {
-    padding: 4rem 0;
+/* --- New Diced Hero Section --- */
+.diced-hero {
+    padding: 2rem;
     overflow: hidden;
-    background-color: var(--color-lime); /* Alternate hero background */
+    display: flex;
+    flex-direction: row; /* Default LTR, but we handle RTL via direction */
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    max-width: 1536px;
+    margin: 0 auto;
+    min-height: auto;
+    height: auto;
+    position: relative;
+    background-color: var(--color-off-white);
 }
 
-.hero-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: center;
+.diced-hero-content {
+    flex: 1;
+    margin-left: 2rem; /* Gap for text */
+    text-align: right;
+    align-items: flex-start; /* Align right in RTL context */
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
 }
 
-.hero-content h1 {
+.diced-hero-top-text {
+    font-family: var(--font-accent);
+    color: var(--diced-hero-top-text);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s forwards;
+}
+
+.diced-hero-main-text {
     font-family: var(--font-heading);
-    font-size: 4.5rem;
+    font-size: 5rem;
     line-height: 1.1;
-    margin-bottom: 1.5rem;
-    color: var(--color-dark-green);
+    margin-bottom: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s forwards 0.1s;
 }
 
-.hero-subtitle {
+.diced-hero-main-text span {
+    background-image: linear-gradient(45deg, var(--diced-hero-gradient-from), var(--diced-hero-gradient-to));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.diced-hero-separator {
+    height: 0.25rem;
+    background: var(--diced-hero-separator);
+    border: none;
+    margin: 1.125rem 0 1.875rem auto; /* Align right */
+    width: 0;
+    animation: expandWidth 0.5s forwards 0.2s;
+}
+
+.diced-hero-sub-text {
+    color: var(--diced-hero-sub-text);
     font-size: 1.25rem;
     margin-bottom: 2rem;
-    max-width: 5000px;
-    font-family: var(--font-accent); /* Use accent font for subtitle */
+    max-width: 600px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s forwards 0.3s;
 }
 
-/* Hero Visuals & Fun Shapes */
-.hero-visuals {
-    position: relative;
-    height: 400px;
+.diced-hero-actions {
+    margin-top: 1rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start; /* Right aligned in RTL */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s forwards 0.4s;
 }
 
-.fun-shapes {
+.diced-hero-visuals {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align left side visually */
+    position: relative;
+    width: 50%;
+    padding-right: 2rem;
+    height: auto;
+}
+
+.diced-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+.diced-grid-item {
     position: relative;
     width: 100%;
-    height: 100%;
-    pointer-events: auto; /* Re-enable pointer events for dragging */
+    padding-bottom: 100%;
+    overflow: hidden;
+    border-radius: 20px;
 }
 
-.fun-shape {
+/* Warped Image Masks & Styles */
+.warped-image {
     position: absolute;
-    width: 150px;
-    height: auto;
-    cursor: grab;
-    user-select: none;
-    touch-action: none;
-    will-change: transform;
-    /* Blend mode to help remove white background */
-    mix-blend-mode: darken;
-    background: transparent;
-    object-fit: contain;
-    /* Filter to help remove white pixels and improve visibility */
-    filter: contrast(1.1) brightness(1.05);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    mix-blend-mode: darken; /* Blend white backgrounds with container */
+    
+    --r: 20px;
+    --s: 40px;
+    --x: 25px;
+    --y: 5px;
 }
 
-.fun-shape:active {
-    cursor: grabbing;
+.warped-image:hover {
+    transform: scale(1.05);
 }
 
-/* Position the vegetable/fruit images in hero */
-/* Distributed evenly to cover the hero visual area */
-
-/* Top Right */
-.shape-1 {
-    top: 5%;
-    right: 5%;
-    width: 220px;
-    z-index: 1;
+.top-right {
+    --_m: / calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%, #0000 72%);
+    --_g: conic-gradient(at calc(100% - var(--r)) var(--r), #0000 25%, #000 0);
+    --_d: (var(--s) + var(--r));
+    mask: 
+        calc(100% - var(--_d) - var(--x)) 0 var(--_m), 
+        100% calc(var(--_d) + var(--y)) var(--_m), 
+        radial-gradient(var(--s) at 100% 0, #0000 99%, #000 calc(100% + 1px)) calc(-1*var(--r) - var(--x)) calc(var(--r) + var(--y)), 
+        var(--_g) calc(-1*var(--_d) - var(--x)) 0, 
+        var(--_g) 0 calc(var(--_d) + var(--y));
+    mask-repeat: no-repeat;
+    -webkit-mask: 
+        calc(100% - var(--_d) - var(--x)) 0 var(--_m), 
+        100% calc(var(--_d) + var(--y)) var(--_m), 
+        radial-gradient(var(--s) at 100% 0, #0000 99%, #000 calc(100% + 1px)) calc(-1*var(--r) - var(--x)) calc(var(--r) + var(--y)), 
+        var(--_g) calc(-1*var(--_d) - var(--x)) 0, 
+        var(--_g) 0 calc(var(--_d) + var(--y));
+    -webkit-mask-repeat: no-repeat;
 }
 
-/* Bottom Left */
-.shape-2 {
-    bottom: 10%;
-    left: 10%;
-    width: 200px;
-    z-index: 2;
+.top-left {
+    --_m: / calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%, #0000 72%);
+    --_g: conic-gradient(at var(--r) var(--r), #000 75%, #0000 0);
+    --_d: (var(--s) + var(--r));
+    mask: 
+        calc(var(--_d) + var(--x)) 0 var(--_m), 
+        0 calc(var(--_d) + var(--y)) var(--_m), 
+        radial-gradient(var(--s) at 0 0, #0000 99%, #000 calc(100% + 1px)) calc(var(--r) + var(--x)) calc(var(--r) + var(--y)), 
+        var(--_g) calc(var(--_d) + var(--x)) 0, 
+        var(--_g) 0 calc(var(--_d) + var(--y));
+    mask-repeat: no-repeat;
+    -webkit-mask: 
+        calc(var(--_d) + var(--x)) 0 var(--_m), 
+        0 calc(var(--_d) + var(--y)) var(--_m), 
+        radial-gradient(var(--s) at 0 0, #0000 99%, #000 calc(100% + 1px)) calc(var(--r) + var(--x)) calc(var(--r) + var(--y)), 
+        var(--_g) calc(var(--_d) + var(--x)) 0, 
+        var(--_g) 0 calc(var(--_d) + var(--y));
+    -webkit-mask-repeat: no-repeat;
 }
 
-/* Center */
-.shape-3 {
-    top: 35%;
-    left: 35%;
-    width: 180px;
-    z-index: 3;
+.bottom-left {
+    --_m: / calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%, #0000 72%);
+    --_g: conic-gradient(from 180deg at var(--r) calc(100% - var(--r)), #0000 25%, #000 0);
+    --_d: (var(--s) + var(--r));
+    mask: 
+        calc(var(--_d) + var(--x)) 100% var(--_m), 
+        0 calc(100% - var(--_d) - var(--y)) var(--_m), 
+        radial-gradient(var(--s) at 0 100%, #0000 99%, #000 calc(100% + 1px)) calc(var(--r) + var(--x)) calc(-1*var(--r) - var(--y)), 
+        var(--_g) calc(var(--_d) + var(--x)) 0, 
+        var(--_g) 0 calc(-1*var(--_d) - var(--y));
+    mask-repeat: no-repeat;
+    -webkit-mask: 
+        calc(var(--_d) + var(--x)) 100% var(--_m), 
+        0 calc(100% - var(--_d) - var(--y)) var(--_m), 
+        radial-gradient(var(--s) at 0 100%, #0000 99%, #000 calc(100% + 1px)) calc(var(--r) + var(--x)) calc(-1*var(--r) - var(--y)), 
+        var(--_g) calc(var(--_d) + var(--x)) 0, 
+        var(--_g) 0 calc(-1*var(--_d) - var(--y));
+    -webkit-mask-repeat: no-repeat;
 }
 
-/* Mid Right */
-.shape-4 {
+.bottom-right {
+    --_m: / calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%, #0000 72%);
+    --_g: conic-gradient(from 90deg at calc(100% - var(--r)) calc(100% - var(--r)), #0000 25%, #000 0);
+    --_d: (var(--s) + var(--r));
+    mask: 
+        calc(100% - var(--_d) - var(--x)) 100% var(--_m), 
+        100% calc(100% - var(--_d) - var(--y)) var(--_m), 
+        radial-gradient(var(--s) at 100% 100%, #0000 99%, #000 calc(100% + 1px)) calc(-1*var(--r) - var(--x)) calc(-1*var(--r) - var(--y)), 
+        var(--_g) calc(-1*var(--_d) - var(--x)) 0, 
+        var(--_g) 0 calc(-1*var(--_d) - var(--y));
+    mask-repeat: no-repeat;
+    -webkit-mask: 
+        calc(100% - var(--_d) - var(--x)) 100% var(--_m), 
+        100% calc(100% - var(--_d) - var(--y)) var(--_m), 
+        radial-gradient(var(--s) at 100% 100%, #0000 99%, #000 calc(100% + 1px)) calc(-1*var(--r) - var(--x)) calc(-1*var(--r) - var(--y)), 
+        var(--_g) calc(-1*var(--_d) - var(--x)) 0, 
+        var(--_g) 0 calc(-1*var(--_d) - var(--y));
+    -webkit-mask-repeat: no-repeat;
+}
+
+/* Chronicle Button */
+.chronicleButton {
+    --chronicle-button-default-hover-color: var(--diced-hero-button-hover-bg);
+    --chronicle-button-border-radius: 8px;
+    border-radius: var(--chronicle-button-border-radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    line-height: 1;
+    padding: 1rem 2rem; /* Adjusted padding */
+    cursor: pointer;
+    border: none;
+    font-weight: 700;
+    background: var(--diced-hero-button-bg);
+    color: var(--diced-hero-button-fg);
+    transition: background 0.4s linear, color 0.4s linear;
+    will-change: background, color;
+    position: relative;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    width: 200px; /* Fixed width for consistent flip */
+}
+
+.chronicleButton:hover {
+    background: var(--diced-hero-button-hover-bg);
+    color: var(--diced-hero-button-hover-fg);
+}
+
+.chronicleButton span {
+    position: relative;
+    display: block;
+    perspective: 108px;
+}
+
+.chronicleButton span:nth-of-type(2) {
+    position: absolute;
     top: 50%;
-    right: 10%;
-    width: 170px;
-    z-index: 4;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
 }
 
-/* Top Left */
-.shape-5 {
-    top: 10%;
-    left: 10%;
-    width: 160px;
-    z-index: 2;
+.chronicleButton em {
+    font-style: normal;
+    display: inline-block;
+    font-size: 1.2rem;
+    color: inherit;
+    will-change: transform, opacity, color, transition;
+    transition: transform 0.55s cubic-bezier(.645,.045,.355,1), opacity 0.35s linear 0.2s, color 0.4s linear;
 }
 
-/* Bottom Right-ish */
-.shape-6 {
-    bottom: 5%;
-    right: 30%;
-    width: 150px;
-    z-index: 3;
+.chronicleButton span:nth-of-type(1) em {
+    transform-origin: top;
 }
 
-/* Top Center-ish */
-.shape-7 {
-    top: 5%;
-    left: 45%;
-    width: 180px;
-    z-index: 1;
+.chronicleButton span:nth-of-type(2) em {
+    opacity: 0;
+    transform: rotateX(-90deg) scaleX(.9) translate3d(0,10px,0);
+    transform-origin: bottom;
+}
+
+.chronicleButton:hover span:nth-of-type(1) em {
+    opacity: 0;
+    transform: rotateX(90deg) scaleX(.9) translate3d(0,-10px,0);
+}
+
+.chronicleButton:hover span:nth-of-type(2) em {
+    opacity: 1;
+    transform: rotateX(0deg) scaleX(1) translateZ(0);
+    transition: transform 0.75s cubic-bezier(.645,.045,.355,1), opacity 0.35s linear 0.3s, color 0.4s linear;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes expandWidth {
+    to {
+        width: 6.25rem;
+    }
 }
 
 /* Marquee */
@@ -695,7 +882,7 @@ img {
 
 /* Responsive */
 @media (max-width: 900px) {
-    .hero-content h1 {
+    .diced-hero-main-text {
         font-size: 3.5rem;
     }
 }
@@ -709,70 +896,41 @@ img {
         display: flex;
     }
 
-    .hero-container {
-        grid-template-columns: 1fr;
+    /* Diced Hero Mobile */
+    .diced-hero {
+        flex-direction: column;
+        padding: 2rem 1rem;
+    }
+
+    .diced-hero-content {
+        max-width: 100%;
+        margin-left: 0;
         text-align: center;
+        align-items: center;
+        order: 2; /* Visuals first on mobile? Usually hero text is first, let's keep text first if visually pleasing or match original logic */
+        /* Actually user prompt says: flexDirection: isMobile ? 'column' : ... */
+        /* And text is flex: 1. In mobile column, order matters. */
     }
 
-    .hero-content {
-        order: 2;
-    }
-
-    .hero-visuals {
-        order: 1;
-        height: 300px;
+    .diced-hero-visuals {
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 2rem;
+        order: 1; /* Images on top? Or text? Let's check original logic. */
+        /* Original logic: Text div first, Image div second. */
+        /* Flex direction column -> Text on top. */
+        /* But wait, let's put images on top for visual impact? */
+        /* User prompt code: flexDirection: isMobile ? 'column' : ... */
+        /* The text div is first in DOM. So text on top. */
+        /* Wait, the prompt code has text div first. */
     }
     
-    /* Default mobile vegetable positions - Distributed evenly */
-    .shape-1 {
-        top: 5%;
-        left: 5%;
-        right: auto;
-        width: 120px;
+    .diced-hero-separator {
+        margin: 1.125rem auto 1.875rem; /* Center separator */
     }
     
-    .shape-2 {
-        bottom: 5%;
-        right: 5%;
-        left: auto; /* Override desktop left */
-        width: 115px;
-    }
-    
-    .shape-3 {
-        top: 40%;
-        left: 40%;
-        right: auto;
-        width: 110px;
-    }
-    
-    .shape-4 {
-        top: 10%;
-        right: 5%;
-        left: auto;
-        width: 110px;
-    }
-
-    .shape-5 {
-        bottom: 10%;
-        left: 5%;
-        width: 105px;
-    }
-
-    .shape-6 {
-        top: 55%;
-        right: 2%;
-        width: 100px;
-    }
-
-    .shape-7 {
-        top: 30%;
-        left: 2%;
-        width: 100px;
-    }
-
-    .hero-subtitle {
-        margin-left: auto;
-        margin-right: auto;
+    .diced-hero-actions {
+        justify-content: center;
     }
 
     .footer-container {
@@ -788,7 +946,7 @@ img {
 /* Accent Header */
 .accent-header {
     font-family: var(--font-accent);
-    font-size: 4rem; /* Updated to 4rem as requested */
+    font-size: 4rem;
     color: var(--color-orange);
     margin-bottom: 0.5rem;
     display: inline-block;
