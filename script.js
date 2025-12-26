@@ -63,55 +63,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Blob Cursor Logic
-    const blobs = document.querySelectorAll('.blob');
-    const blobContainer = document.querySelector('.blob-cursor-container');
-    
-    if (blobs.length > 0) {
-        // Configuration
-        const fastDuration = 0.1;
-        const slowDuration = 0.5;
-        const fastEase = 'power3.out';
-        const slowEase = 'power1.out';
+    // Hero Image Carousel
+    const carouselImages = document.querySelectorAll('.carousel-image');
+    if (carouselImages.length > 0) {
+        let currentIndex = 0;
+        const CHANGE_INTERVAL = 2000; // 2 seconds per image
 
-        // Initial position (center screen or off-screen)
-        let mouseX = window.innerWidth / 2;
-        let mouseY = window.innerHeight / 2;
-
-        // Track mouse movement
-        window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
+        function showNextImage() {
+            // Remove active class from current image
+            carouselImages[currentIndex].classList.remove('active');
             
-            // Animate blobs
-            blobs.forEach((blob, index) => {
-                const isLead = index === 0;
-                gsap.to(blob, {
-                    x: mouseX,
-                    y: mouseY,
-                    duration: isLead ? fastDuration : slowDuration,
-                    ease: isLead ? fastEase : slowEase,
-                    overwrite: 'auto'
-                });
-            });
-        });
-
-        // Hover Effect on Buttons and Links
-        const interactiveElements = document.querySelectorAll('a, button, .btn, .product-card, input, select, textarea');
-        
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                blobContainer.classList.add('hover-active');
-            });
+            // Move to next image
+            currentIndex = (currentIndex + 1) % carouselImages.length;
             
-            el.addEventListener('mouseleave', () => {
-                blobContainer.classList.remove('hover-active');
-            });
-        });
+            // Add active class to new image
+            carouselImages[currentIndex].classList.add('active');
+        }
 
-        // Handle window resize (optional, mainly for initial pos if needed)
-        window.addEventListener('resize', () => {
-             // Logic if needed
-        });
+        // Start the carousel
+        setInterval(showNextImage, CHANGE_INTERVAL);
     }
 });
