@@ -759,32 +759,32 @@ img {
 
 .logos-marquee-container {
     display: flex;
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
+    justify-content: center; /* Center logos on screen */
+    align-items: center;
     width: 100%;
-    padding: 2rem 0; /* Add vertical padding */
+    padding: 3rem 2rem; /* Vertical and horizontal padding */
+    overflow: visible; /* No need to hide overflow */
 }
 
 .logos-marquee-content {
-    display: inline-flex;
-    gap: 8rem; /* Increased gap from 6rem to prevent overlap */
+    display: flex;
+    gap: 4rem; /* Good spacing between logos */
     align-items: center;
-    animation: logos-scroll 60s linear infinite; /* Slower for smoother transitions */
-    will-change: transform;
-    padding-right: 8rem; /* Match gap size */
-    padding-left: 0; /* Ensure no left padding */
+    justify-content: center; /* Center the logos */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    max-width: 1400px; /* Limit width on very large screens */
+    /* Animation removed - static display */
 }
 
 .logos-marquee-content:nth-child(2) {
-    animation-delay: -30s; /* Adjust to match new animation duration */
+    display: none; /* Hide duplicate set - not needed for static display */
 }
 
 .partner-logo {
-    height: 60px;
+    height: 70px; /* Slightly larger since we have room */
     width: auto;
-    min-width: 100px; /* Increased from 80px for better spacing */
-    max-width: 150px; /* Prevent overly large logos */
+    min-width: 80px;
+    max-width: 140px;
     object-fit: contain;
     filter: grayscale(100%);
     opacity: 0.7;
@@ -796,17 +796,10 @@ img {
 .partner-logo:hover {
     filter: grayscale(0%);
     opacity: 1;
-    transform: scale(1.1);
+    transform: scale(1.15);
 }
 
-@keyframes logos-scroll {
-    0% { 
-        transform: translateX(0); 
-    }
-    100% { 
-        transform: translateX(calc(-100% - 8rem)); /* Match padding-right */
-    }
-}
+/* Animation removed - logos are now static */
 
 /* Partners Section */
 .partners-section {
@@ -1145,6 +1138,26 @@ img {
 
     .social-links {
         justify-content: center;
+    }
+    
+    /* Logos Section Mobile */
+    .logos-banner-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .logos-marquee-container {
+        padding: 2rem 1rem;
+    }
+    
+    .logos-marquee-content {
+        gap: 2rem; /* Reduce gap on mobile */
+    }
+    
+    .partner-logo {
+        height: 50px; /* Smaller on mobile */
+        min-width: 60px;
+        max-width: 100px;
     }
     
     /* Re-enable default cursor on mobile */
