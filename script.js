@@ -189,38 +189,50 @@ document.addEventListener('DOMContentLoaded', () => {
     // Interactive Map - Partner Dots
     const partnerDots = document.querySelectorAll('.partner-dot');
     const tooltip = document.getElementById('partner-tooltip');
+    const mapContainer = document.querySelector('.map-container');
 
-    if (tooltip && partnerDots.length > 0) {
+    if (tooltip && partnerDots.length > 0 && mapContainer) {
+        // Cache the map container rect for better performance
+        let mapRect = mapContainer.getBoundingClientRect();
+        
+        // Update rect on window resize
+        window.addEventListener('resize', () => {
+            mapRect = mapContainer.getBoundingClientRect();
+        });
+
         partnerDots.forEach(dot => {
+            let isHovering = false;
+            
             dot.addEventListener('mouseenter', (e) => {
+                isHovering = true;
                 const name = dot.getAttribute('data-name');
                 const products = dot.getAttribute('data-products');
                 
                 tooltip.querySelector('.tooltip-title').textContent = name;
                 tooltip.querySelector('.tooltip-products').textContent = products;
                 tooltip.classList.add('active');
-            });
-
-            dot.addEventListener('mousemove', (e) => {
-                const mapContainer = document.querySelector('.map-container');
-                const rect = mapContainer.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
                 
+                // Position tooltip immediately
+                const x = e.clientX - mapRect.left;
+                const y = e.clientY - mapRect.top;
                 tooltip.style.left = `${x + 20}px`;
                 tooltip.style.top = `${y - 40}px`;
             });
 
-            dot.addEventListener('mouseleave', () => {
-                tooltip.classList.remove('active');
+            dot.addEventListener('mousemove', (e) => {
+                if (!isHovering) return;
+                
+                const x = e.clientX - mapRect.left;
+                const y = e.clientY - mapRect.top;
+                
+                // Offset tooltip to avoid interfering with hover detection
+                tooltip.style.left = `${x + 25}px`;
+                tooltip.style.top = `${y - 45}px`;
             });
 
-            // Add click animation
-            dot.addEventListener('click', () => {
-                dot.querySelector('circle').style.animation = 'none';
-                setTimeout(() => {
-                    dot.querySelector('circle').style.animation = 'pulse 2s ease-in-out infinite';
-                }, 10);
+            dot.addEventListener('mouseleave', () => {
+                isHovering = false;
+                tooltip.classList.remove('active');
             });
         });
     }

@@ -838,18 +838,23 @@ img {
 
 .partner-dot {
     cursor: pointer !important;
-    transition: transform 0.2s ease;
+    /* Larger interaction area to prevent hover flickering */
+    pointer-events: bounding-box;
 }
 
-.partner-dot:hover {
-    transform: scale(1.2);
+/* Increase the clickable area around each dot */
+.partner-dot circle {
+    /* Add invisible stroke for larger hit area */
+    stroke-opacity: 1;
 }
 
 .dot-circle {
     fill: var(--color-orange);
     stroke: var(--color-dark-green);
     stroke-width: 2;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center center;
+    transform-box: fill-box;
     /* Animation removed - dots should be static until hover */
 }
 
@@ -857,7 +862,8 @@ img {
     fill: var(--color-primary-green);
     stroke: var(--color-orange);
     stroke-width: 3;
-    animation: none;
+    /* Scale from center to avoid hover boundary issues */
+    transform: scale(1.3);
 }
 
 /* Pulse animation removed - dots are now static until hover */
