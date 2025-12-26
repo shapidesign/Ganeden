@@ -6,7 +6,7 @@
     <title>שליש גנעדן | Shlish Ganeden</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
-    <!-- Version: 0.5.0 -->
+    <!-- Version: 0.5.1 -->
 </head>
 <body>
 
@@ -50,6 +50,45 @@
                 <li><a href="#partners">השותפים שלנו</a></li>
             </ul>
         </nav>
+    </div>
+
+    <!-- Shopping Cart Modal -->
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-modal-overlay"></div>
+        <div class="cart-modal-content">
+            <div class="cart-modal-header">
+                <h2>האוסף שלי</h2>
+                <button class="cart-modal-close" aria-label="סגור">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="cart-modal-body">
+                <div class="cart-items" id="cart-items">
+                    <!-- Cart items will be dynamically added here -->
+                    <div class="empty-cart">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <p>האוסף שלכם ריק</p>
+                        <p class="empty-cart-subtext">הוסיפו מוצרים כדי להתחיל</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cart-modal-footer">
+                <div class="cart-total">
+                    <span>סה"כ:</span>
+                    <span class="cart-total-amount" id="cart-total">₪0</span>
+                </div>
+                <button class="btn btn-primary btn-checkout" data-magnetic>
+                    <span>המשך לתשלום</span>
+                </button>
+            </div>
+        </div>
     </div>
 
     <!-- Diced Hero Section -->
@@ -287,6 +326,6 @@
         });
     </script>
     <script src="script.js"></script>
-    <!-- Version Tag: v0.5.0 -->
+    <!-- Version Tag: v0.5.1 -->
 </body>
 </html>
