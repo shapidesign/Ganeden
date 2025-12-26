@@ -65,6 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Blob Cursor Logic
     const blobs = document.querySelectorAll('.blob');
+    const blobContainer = document.querySelector('.blob-cursor-container');
+    
     if (blobs.length > 0) {
         // Configuration
         const fastDuration = 0.1;
@@ -89,8 +91,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     y: mouseY,
                     duration: isLead ? fastDuration : slowDuration,
                     ease: isLead ? fastEase : slowEase,
-                    overwrite: 'auto' // ensure new tweens overwrite old ones smoothly
+                    overwrite: 'auto'
                 });
+            });
+        });
+
+        // Hover Effect on Buttons and Links
+        const interactiveElements = document.querySelectorAll('a, button, .btn, .product-card, input, select, textarea');
+        
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                blobContainer.classList.add('hover-active');
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                blobContainer.classList.remove('hover-active');
             });
         });
 

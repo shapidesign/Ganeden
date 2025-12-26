@@ -147,7 +147,8 @@ img {
     background-color: var(--color-lime); /* Matching theme */
     opacity: 0.6;
     box-shadow: 10px 10px 5px 0 rgba(20, 53, 47, 0.4); /* Dark Green Shadow */
-    will-change: transform;
+    will-change: transform, width, height, background-color, border;
+    transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border 0.3s ease, opacity 0.3s ease;
     /* Initial centered position is handled by JS but defaults to top-left if not set */
     transform: translate(-50%, -50%); /* Centering handled in JS usually, but here for initial render */
 }
@@ -156,16 +157,33 @@ img {
     position: absolute;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.8);
+    transition: opacity 0.3s ease;
 }
 
-/* Blob Specific Sizes */
-.blob-1 { width: 60px; height: 60px; }
-.blob-2 { width: 125px; height: 125px; }
-.blob-3 { width: 75px; height: 75px; }
+/* Blob Specific Sizes (Reduced as requested) */
+.blob-1 { width: 40px; height: 40px; }
+.blob-2 { width: 80px; height: 80px; }
+.blob-3 { width: 50px; height: 50px; }
 
-.dot-1 { width: 20px; height: 20px; top: 20px; left: 20px; }
-.dot-2 { width: 35px; height: 35px; top: 45px; left: 45px; }
-.dot-3 { width: 25px; height: 25px; top: 25px; left: 25px; }
+.dot-1 { width: 12px; height: 12px; top: 14px; left: 14px; }
+.dot-2 { width: 20px; height: 20px; top: 30px; left: 30px; }
+.dot-3 { width: 16px; height: 16px; top: 17px; left: 17px; }
+
+/* Blob Hover State (Wrap around button) */
+.blob-cursor-container.hover-active .blob {
+    background-color: transparent;
+    border: 3px solid var(--color-lime);
+    opacity: 1;
+    box-shadow: none;
+}
+
+.blob-cursor-container.hover-active .blob-1 { width: 60px; height: 60px; }
+.blob-cursor-container.hover-active .blob-2 { width: 90px; height: 90px; }
+.blob-cursor-container.hover-active .blob-3 { width: 70px; height: 70px; }
+
+.blob-cursor-container.hover-active .inner-dot {
+    opacity: 0; /* Hide inner dots on hover */
+}
 
 /* Buttons */
 .btn {
@@ -334,7 +352,7 @@ img {
     min-height: auto;
     height: auto;
     position: relative;
-    background-color: var(--color-off-white);
+    background-color: var(--color-lime); /* Reverted to Light Green */
 }
 
 .diced-hero-content {
@@ -370,7 +388,7 @@ img {
 }
 
 .diced-hero-main-text span {
-    background-image: linear-gradient(45deg, var(--diced-hero-gradient-from), var(--diced-hero-gradient-to));
+    background-image: linear-gradient(45deg, var(--color-primary-green), var(--color-dark-green)); /* Adjusted for visibility on lime bg */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
@@ -438,10 +456,10 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain; /* PNGs should fit */
     cursor: none;
     transition: transform 0.3s ease;
-    mix-blend-mode: darken; /* Blend white backgrounds with container */
+    /* mix-blend-mode: darken; Removed for PNGs */
     
     --r: 20px;
     --s: 40px;
