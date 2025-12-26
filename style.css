@@ -344,19 +344,20 @@ img {
 
 /* --- New Diced Hero Section --- */
 .diced-hero {
-    padding: 2rem;
+    padding: 4rem 2rem; /* Increased padding */
     overflow: hidden;
     display: flex;
     flex-direction: row; /* Default LTR, but we handle RTL via direction */
     justify-content: center;
     align-items: stretch;
-    width: 100%;
-    max-width: 1536px;
-    margin: 0 auto;
-    min-height: auto;
-    height: auto;
+    width: 100vw; /* Full viewport width */
+    max-width: none; /* Remove max-width constraint */
+    margin: 0;
+    margin-left: calc(-50vw + 50%); /* Extend to full width */
+    margin-right: calc(-50vw + 50%); /* Extend to full width */
+    min-height: 80vh; /* Minimum viewport height */
     position: relative;
-    background-color: var(--color-lime); /* Reverted to Light Green */
+    background-color: var(--color-lime); /* Light Green */
 }
 
 .diced-hero-content {
@@ -458,6 +459,9 @@ img {
     transform: scale(0.8) rotate(-10deg);
     transition: opacity 0.8s ease, transform 0.8s ease;
     pointer-events: none;
+    /* Ensure images load */
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .carousel-image.active {
