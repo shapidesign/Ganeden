@@ -1123,17 +1123,27 @@ img {
         padding-right: 0;
         margin-bottom: 0;
         order: 2; /* Images AFTER text on mobile */
+        min-height: 350px; /* Ensure container has height */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .hero-image-carousel {
-        max-width: 350px; /* Smaller on mobile */
-        height: 350px; /* Smaller on mobile */
+        max-width: 300px !important; /* Smaller on mobile */
+        height: 300px !important; /* Smaller on mobile */
+        min-height: 300px; /* Ensure carousel has minimum height */
         margin: 0 auto; /* Center the carousel */
+        position: relative; /* Ensure positioning context */
     }
     
     .carousel-image {
-        width: 100%;
-        height: 100%;
+        width: 110% !important;
+        height: 110% !important;
+    }
+    
+    .carousel-image.active {
+        transform: scale(1.1) rotate(0deg) !important; /* Ensure active image is visible */
     }
     
     .diced-hero-separator {
