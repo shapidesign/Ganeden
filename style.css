@@ -1125,6 +1125,17 @@ img {
         order: 2; /* Images AFTER text on mobile */
     }
     
+    .hero-image-carousel {
+        max-width: 350px; /* Smaller on mobile */
+        height: 350px; /* Smaller on mobile */
+        margin: 0 auto; /* Center the carousel */
+    }
+    
+    .carousel-image {
+        width: 100%;
+        height: 100%;
+    }
+    
     .diced-hero-separator {
         margin: 1.125rem auto 1.875rem; /* Center separator */
     }
