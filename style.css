@@ -1111,16 +1111,18 @@ img {
     .diced-hero-content {
         max-width: 100%;
         margin-left: 0;
+        padding-right: 0; /* Remove right padding on mobile */
         text-align: center;
         align-items: center;
-        order: 2; /* Text after images on mobile */
+        order: 1; /* Text FIRST on mobile */
+        margin-bottom: 2rem; /* Space between text and images */
     }
 
     .diced-hero-visuals {
         width: 100%;
         padding-right: 0;
-        margin-bottom: 2rem;
-        order: 1; /* Images first on mobile */
+        margin-bottom: 0;
+        order: 2; /* Images AFTER text on mobile */
     }
     
     .diced-hero-separator {
@@ -1128,7 +1130,7 @@ img {
     }
     
     .diced-hero-actions {
-        justify-content: center;
+        justify-content: center; /* Center CTA button */
     }
 
     .footer-container {
